@@ -11,9 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    mModel = new QStandardItemModel(this);
-    ui->tableView->setModel(mModel);
-    setCentralWidget(ui->tableView);
+    mAlumnes = new QStandardItemModel(this);
+    //ui->tableView->setModel(mAlumnes);
+    //setCentralWidget(ui->tableView);
+    ui->tvAlumnes->setModel(mAlumnes);
     setWindowTitle("Proves Personalitzades");
 
 }
@@ -37,7 +38,7 @@ void MainWindow::on_actionObrir_triggered()
     int iFila = 0;
     int colCount = 0;
     while (!xin.atEnd()) {
-        mModel->setRowCount(iFila+1);
+        mAlumnes->setRowCount(iFila+1);
         auto line =xin.readLine();
         // Per conservar les ""
         //TODO abans mirar que no hi hagi cap \", i si hi és, evitar el problema
@@ -51,7 +52,7 @@ void MainWindow::on_actionObrir_triggered()
                 if (j>0) values.removeFirst(); // Eliminar el valor que va de les " a la ,
                 if( values.size()+iCol > colCount) {
                     colCount = values.size()+iCol;
-                    mModel->setColumnCount(colCount);
+                    mAlumnes->setColumnCount(colCount);
                 }
                 for (int i =iCol; i<(iCol+values.size()); i++) {
                     setValueAt(iFila,i,values.at(i-iCol));
@@ -77,8 +78,8 @@ void MainWindow::on_actionGuardar_triggered()
     QFile file(nomFitxer);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
     QTextStream xout(&file);
-    const int rowCount = mModel->rowCount();
-    const int colCount = mModel->columnCount();
+    const int rowCount = mAlumnes->rowCount();
+    const int colCount = mAlumnes->columnCount();
     for (int f=0 ;f < rowCount;f++) {
         xout << getValueAt(f,0);
         for (int c=1 ; c< colCount; c++) {
@@ -96,17 +97,17 @@ void MainWindow::on_actionGuardar_triggered()
 
 void MainWindow::setValueAt(int fil, int col, const QString &valor)
 {
-    if (!mModel->item(fil,col)) {
-        mModel->setItem(fil,col,new QStandardItem(valor));
+    if (!mAlumnes->item(fil,col)) {
+        mAlumnes->setItem(fil,col,new QStandardItem(valor));
     } else {
-        mModel->item(fil,col)->setText(valor);
+        mAlumnes->item(fil,col)->setText(valor);
     }
 }
 
 QString MainWindow::getValueAt(int f, int c)
 {
-    if ( !mModel->item(f,c)) return "";
-    return mModel->item(f,c)->text();
+    if ( !mAlumnes->item(f,c)) return "";
+    return mAlumnes->item(f,c)->text();
 
 }
 
