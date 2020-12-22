@@ -1,0 +1,13 @@
+Vocabulari:
+
+Alu: Alumne
+
+Req: Requeriment de pregunta, és a dir les condicions de filtratge sobre tot l'univers de preguntes possibles
+    Exemple: AreaTri, 2  Area de triangle nivell 2
+    IdR
+
+
+AluReq: Definició de quines preguntes (Req) se li ha de fer a cada (Alu)mne
+
+Niv: Nivell (de dificultat de la pregunta)
+

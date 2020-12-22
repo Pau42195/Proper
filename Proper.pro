@@ -9,11 +9,23 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    calureq.cpp \
+    clincsv.cpp \
+    cpar.cpp \
+    cpre.cpp \
+    creq.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    tools.cpp
 
 HEADERS += \
-    mainwindow.h
+    calureq.h \
+    clincsv.h \
+    cpar.h \
+    cpre.h \
+    creq.h \
+    mainwindow.h \
+    tools.h
 
 FORMS += \
     mainwindow.ui
@@ -25,3 +37,6 @@ TRANSLATIONS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Documentacio.txt

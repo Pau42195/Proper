@@ -30,8 +30,16 @@
     </property>
     <addaction name="actionObrir"/>
     <addaction name="actionGuardar"/>
+    <addaction name="actionCarregar_preguntes"/>
+   </widget>
+   <widget class="QMenu" name="menuVeure">
+    <property name="title">
+     <string>Veure</string>
+    </property>
+    <addaction name="actionAlumnes"/>
    </widget>
    <addaction name="menuFitxer"/>
+   <addaction name="menuVeure"/>
   </widget>
   <widget class="QDockWidget" name="dkAlumnes">
    <property name="windowTitle">
@@ -43,19 +51,32 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QTableView" name="tvAlumnes"/>
+      <widget class="QTableView" name="tvAluReq"/>
      </item>
     </layout>
    </widget>
   </widget>
   <action name="actionObrir">
    <property name="text">
-    <string>Obrir</string>
+    <string>Carregar alumnes</string>
    </property>
   </action>
   <action name="actionGuardar">
    <property name="text">
     <string>Guardar</string>
+   </property>
+  </action>
+  <action name="actionAlumnes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Alumnes</string>
+   </property>
+  </action>
+  <action name="actionCarregar_preguntes">
+   <property name="text">
+    <string>Carregar preguntes</string>
    </property>
   </action>
  </widget>
