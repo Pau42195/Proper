@@ -10,6 +10,7 @@ class cPar
 public:
     cPar();
     cPar(tPar tip, QString val);
+    cPar(QString val);
     void setTip(tPar Tip);
     tPar getTip();
     void setVal(QString val);

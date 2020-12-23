@@ -29,6 +29,8 @@ private slots:
 
     void on_actionCarregar_preguntes_triggered();
 
+    void on_comboBox_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     QStandardItemModel *mAluReq;

@@ -3,6 +3,7 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
+QT += sql
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -14,6 +15,7 @@ SOURCES += \
     cpar.cpp \
     cpre.cpp \
     creq.cpp \
+    dbmanager.cpp \
     main.cpp \
     mainwindow.cpp \
     tools.cpp
@@ -24,6 +26,7 @@ HEADERS += \
     cpar.h \
     cpre.h \
     creq.h \
+    dbmanager.h \
     mainwindow.h \
     tools.h
 

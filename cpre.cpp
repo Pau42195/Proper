@@ -57,19 +57,7 @@ void cPre::setParams(QStringList params)
     while (params.size()>0) {
         pa=params.first();
         params.removeFirst();
-        parm = new cPar(tPar::Text,pa);
-
-        bool Ok;
-        int a = pa.toInt(&Ok,10);
-        if (Ok){
-            parm->setTip(tPar::Enter);
-        } else {
-            bool Ok;
-            double a = pa.toDouble(&Ok);
-            if (Ok){
-                parm->setTip(tPar::Real);
-            }
-        }
-        params.append(parm);
+        parm = new cPar(pa);
+        mParams.append(*parm);
     }
 }

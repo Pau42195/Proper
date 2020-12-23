@@ -173,3 +173,8 @@ void MainWindow::on_actionCarregar_preguntes_triggered()
     file.close();
 
 }
+
+void MainWindow::on_comboBox_activated(const QString &arg1)
+{
+
+}
