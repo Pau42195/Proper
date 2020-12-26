@@ -1,5 +1,5 @@
-#ifndef CPRE_H
-#define CPRE_H
+#ifndef CPREG_H
+#define CPREG_H
 
 #include <QObject>
 #include "cpar.h"
@@ -7,7 +7,6 @@
 class cPre
 {
 public:
-
     cPre();
     cPre(
         QString IdPro,
@@ -40,6 +39,12 @@ private:
     QString m_IdPre;
     QString m_Dificultats;
     QList<cPar> m_Params;
+
+
+
+
+
+
 };
 
-#endif // CPRE_H
+#endif // CPREG_H

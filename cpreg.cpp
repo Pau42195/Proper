@@ -1,10 +1,10 @@
-#include "cpre.h"
-
+#include "cpreg.h"
 
 cPre::cPre()
 {
 
 }
+
 
 cPre::cPre(QString IdPro, QString IdAlu, QString Rol, QString IdDefPro, QString PatDif,
            QString IdModPre, QString Req, int NPar, QString PatPre, QString PatRes,
@@ -15,7 +15,7 @@ cPre::cPre(QString IdPro, QString IdAlu, QString Rol, QString IdDefPro, QString 
     m_Rol =         Rol;
     m_IdDefPro = IdDefPro;
     m_PatDif =     PatDif;
-    m_IdModPre;  IdModPre;
+    m_IdModPre=  IdModPre;
     m_Req =        Req;
     m_NPar =       NPar;
     m_PatPre =    PatPre;

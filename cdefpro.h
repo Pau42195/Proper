@@ -4,11 +4,11 @@
 #include <QObject>
 #include "creq.h"
 
-class cAluReq
+class cDefPro
 {
 public:
-    cAluReq();
-    cAluReq(QString nom);
+    cDefPro();
+    cDefPro(QString nom);
     void setNom(QString nom);
     QString getNom();
     QList<cReq> Requeriment;

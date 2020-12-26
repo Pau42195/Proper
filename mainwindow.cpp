@@ -4,22 +4,24 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QFile>
+#include <QDateTime>
 
-#include "cpre.h"
-#include "calureq.h"
+#include "cmodpre.h"
+#include "cdefpro.h"
+#include "dbmanager.h"
 #include "clincsv.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    mAluReq = new QStandardItemModel(this);
+    //mAluReq = new QStandardItemModel(this);
     //ui->tableView->setModel(mAlumnes);
     //setCentralWidget(ui->tableView);
-    ui->tvAluReq->setModel(mAluReq);
+    //ui->tvAluReq->setModel(mAluReq);
     setWindowTitle("Proves Personalitzades");
-
 }
 
 MainWindow::~MainWindow()
@@ -27,115 +29,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+/*
 void MainWindow::on_actionObrir_triggered()
+// Potser en un futur cal fer-ho directament i no calgui obrir la base de dades
 {
-    auto nomFitxer = QFileDialog::getOpenFileName(this,"Obrir",QDir::currentPath(),"CSV file (*.csv)");
+    auto nomFitxer = QFileDialog::getOpenFileName(this,"Obrir",QDir::currentPath(),"SQLite Database (*.db)");
 
     if (nomFitxer.isEmpty()) return;
 
-    QFile file(nomFitxer);
-    if ( !file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
+    mdb.Open(nomFitxer);
 
-    QTextStream xin(&file);
-    int iFila = 0;
-    int colCount = 0;
-    mPreguntes.clear();
-    int ColCount = 0;
-    while (!xin.atEnd()) {
-
-        auto line = xin.readLine();
-        QStringList *values = new cLinCsv(line);
-
-        if (values->size() > ColCount) {
-            ColCount = values->size();
-            mAluReq->setColumnCount(colCount);
-        }
-        for (int i=0; i<values->size(); i++) {
-            setValueAt(iFila,i,values->at(i));
-        }
-        iFila++;
-    }
-
-    file.close();
+    // TODO: Carregar els cursos, les proves fetes, ...
 
 }
 
-void MainWindow::on_actionObrirDb_triggered()
-{
-    auto nomFitxer = QFileDialog::getOpenFileName(this,"Obrir",QDir::currentPath(),"CSV file (*.csv)");
-
-    if (nomFitxer.isEmpty()) return;
-
-
-
-    QFile file(nomFitxer);
-    if ( !file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
-
-    QTextStream xin(&file);
-    int iFila = 0;
-    int colCount = 0;
-    mPreguntes.clear();
-    int ColCount = 0;
-    while (!xin.atEnd()) {
-
-        auto line = xin.readLine();
-        QStringList *values = new cLinCsv(line);
-
-        if (values->size() > ColCount) {
-            ColCount = values->size();
-            mAluReq->setColumnCount(colCount);
-        }
-        for (int i=0; i<values->size(); i++) {
-            setValueAt(iFila,i,values->at(i));
-        }
-        iFila++;
-    }
-
-    file.close();
-
-}
-
-
-void MainWindow::on_actionGuardar_triggered()
-{
-    auto nomFitxer = QFileDialog::getSaveFileName(this,"Desar",QDir::currentPath(),"CSV File (*.csv)");
-    if (nomFitxer.isEmpty()) return;
-    QFile file(nomFitxer);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
-    QTextStream xout(&file);
-    const int rowCount = mAluReq->rowCount();
-    const int colCount = mAluReq->columnCount();
-    for (int f=0 ;f < rowCount;f++) {
-        xout << getValueAt(f,0);
-        for (int c=1 ; c< colCount; c++) {
-            xout << ", " << getValueAt (f,c);
-        }
-        xout << "\n";
-    }
-    file.flush();
-    file.close();
-
-
-
-}
-
-
-void MainWindow::setValueAt(int fil, int col, const QString &valor)
-{
-    if (!mAluReq->item(fil,col)) {
-        mAluReq->setItem(fil,col,new QStandardItem(valor));
-    } else {
-        mAluReq->item(fil,col)->setText(valor);
-    }
-}
-
-QString MainWindow::getValueAt(int f, int c)
-{
-    if ( !mAluReq->item(f,c)) return "";
-    return mAluReq->item(f,c)->text();
-
-}
 
 
 void MainWindow::on_actionAlumnes_triggered()
@@ -143,38 +50,27 @@ void MainWindow::on_actionAlumnes_triggered()
     ui->dkAlumnes->toggleViewAction();
 }
 
-void MainWindow::on_actionCarregar_preguntes_triggered()
-{
-    auto nomFitxer = QFileDialog::getOpenFileName(this,"Obrir",QDir::currentPath(),"CSV file (*.csv)");
-
-    if (nomFitxer.isEmpty()) return;
-
-    QFile file(nomFitxer);
-    if ( !file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
-
-    QTextStream xin(&file);
-
-    mPreguntes.clear();
-    while (!xin.atEnd()) {
-        auto line =xin.readLine();
-        QStringList *values = new cLinCsv(line);
-        cPre pregunta;
-        pregunta.setIdReq(values->first());
-        values->removeFirst();
-        pregunta.setNiv(values->first().toInt());
-        values->removeFirst();
-        pregunta.setPatPre(values->first());
-        values->removeFirst();
-        pregunta.setPatRes(values->first());
-        values->removeFirst();
-        pregunta.setParams(*values);
-        mPreguntes.append(pregunta);
-    }
-    file.close();
-
-}
 
 void MainWindow::on_comboBox_activated(const QString &arg1)
 {
+
+}
+
+void MainWindow::on_actionPrepara_Prova_20_21_2T_M2_05_2T_triggered()
+{
+    mdb.CarregaProva("20-21-2T-M2-05-2T");
+            FesProva()
+}
+*/
+
+void MainWindow::on_cmdCreaPro_clicked()
+{
+    auto nomFitxer = QFileDialog::getOpenFileName(this,"Obrir",QDir::currentPath(),"SQLite Database (*.db)");
+
+    if (nomFitxer.isEmpty()) return;
+
+    mdb.Open(nomFitxer);
+
+    mdb.CreaProva("P002","Prova de Proves 2",QDateTime(QDate(25,12,2020),QTime(18,0,0)),"02T","2","Al1Sub1");
 
 }

@@ -2,15 +2,21 @@
 #define DBMANAGER_H
 
 #include <QSqlDatabase>
-
+#include <QSqlTableModel>
+#include "cpro.h"
 
 class DbManager
 {
 public:
 
-    DbManager(const QString& path);
-
+    DbManager();
     ~DbManager();
+
+    bool Open(QString Path);
+
+    void CreaProva(QString IdProva);
+    cPro CreaProva(QString Id, QString Titol, QDateTime Quan, QString IdCurs, QString RolId, QString IdDefPro);
+
 
     bool isOpen() const;
 
@@ -28,6 +34,7 @@ public:
 
 private:
     QSqlDatabase m_db;
+    QSqlTableModel *m_defpro;
 };
 
 #endif // DBMANAGER_H

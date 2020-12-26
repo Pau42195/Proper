@@ -14,8 +14,8 @@ public:
     void setTip(tPar Tip);
     tPar getTip();
     void setVal(QString val);
-    QString getVal()
-    ;
+    QString getVal();
+
 private:
     tPar mTip;
     QString mVal;

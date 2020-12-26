@@ -6,26 +6,26 @@ cReq::cReq()
 }
 
 cReq::cReq(QString idreq, int niv) {
-    mNiv = niv;
-    mIdReq=idreq;
+    m_Dif = niv;
+    m_IdReq=idreq;
 }
 
-void cReq::setNiv(int niv)
+void cReq::setDif(QString Dif)
 {
-    mNiv = niv;
+    m_Dif = Dif;
 }
 
-int cReq::getNiv()
+QString cReq::getDif()
 {
-    return mNiv;
+    return m_Dif;
 }
 
 void cReq::setIdReq(QString idreq)
 {
-    mIdReq=idreq;
+    m_IdReq=idreq;
 }
 
 QString cReq::getIdReq()
 {
-    return mIdReq;
+    return m_IdReq;
 }

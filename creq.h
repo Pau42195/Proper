@@ -9,14 +9,14 @@ class cReq
 public:
     cReq();
     cReq(QString idreq, int niv);
-    void setNiv(int niv);
-    int getNiv();
+    void setDif(QString Dif);
+    QString getDif();
     void setIdReq(QString idreq);
     QString getIdReq();
 
 private:
-    QString mIdReq;
-    int mNiv;
+    QString m_IdReq;
+    QString m_Dif;
 };
 
 #endif // CREQ_H

@@ -10,10 +10,14 @@ QT += sql
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    calureq.cpp \
+    calt.cpp \
+    cdefpro.cpp \
     clincsv.cpp \
+    cmodpre.cpp \
     cpar.cpp \
-    cpre.cpp \
+    cpreg.cpp \
+    cpro.cpp \
+    cproind.cpp \
     creq.cpp \
     dbmanager.cpp \
     main.cpp \
@@ -21,10 +25,14 @@ SOURCES += \
     tools.cpp
 
 HEADERS += \
-    calureq.h \
+    calt.h \
+    cdefpro.h \
     clincsv.h \
+    cmodpre.h \
     cpar.h \
-    cpre.h \
+    cpreg.h \
+    cpro.h \
+    cproind.h \
     creq.h \
     dbmanager.h \
     mainwindow.h \
